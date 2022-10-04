@@ -22,3 +22,25 @@ const gameBoard = (() => {
         bottomRight
     };
 })();
+
+let gridboxContainer = document.createElement('div');
+gridboxContainer.id = 'gridbox-container';
+document.body.appendChild(gridboxContainer);
+
+for (let i = 0; i < gameBoard.gameBoardGrid.length; i++){
+    let gridbox = document.createElement('div');
+    document.getElementById('gridbox-container').appendChild(gridbox);
+}
+
+
+const playerX = () => {
+    addEventListener('click', () => {
+        
+    });
+}
+
+const playerO = () => {
+    addEventListener('click', () => {
+        
+    });
+}
