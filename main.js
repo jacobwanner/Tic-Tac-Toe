@@ -9,6 +9,12 @@ const gameBoard = (() => {
     let bottomLeft = gameBoardGrid[7];
     let bottomMiddle = gameBoardGrid[8];
     let bottomRight = gameBoardGrid[9];
+    if(gameBoardGrid[0, 1, 2] || gameBoardGrid[ 0, 4 ,8] || gameBoardGrid[0, 3, 6]
+        || gameBoardGrid[1, 4, 7] || gameBoardGrid[2, 4, 6] || gameBoardGrid[2, 5, 8]
+        || gameBoardGrid[3, 4, 5] || gameBoardGrid[6, 7 ,8] === 'x' || 'o')
+        { 
+            console.log('winner winner');
+        };
     return {
         gameBoardGrid,
         topLeft,
@@ -19,7 +25,8 @@ const gameBoard = (() => {
         middleRight,
         bottomLeft,
         bottomMiddle,
-        bottomRight
+        bottomRight,
+        gameWon
     };
 })();
 
@@ -31,7 +38,6 @@ for (let i = 0; i < gameBoard.gameBoardGrid.length; i++){
     let gridbox = document.createElement('div');
     document.getElementById('gridbox-container').appendChild(gridbox);
 }
-
 
 const playerX = () => {
     addEventListener('click', () => {
