@@ -38,19 +38,20 @@ let gridbox = []
 for (let i = 0; i < gameBoard.gameBoardGrid.length; i++){
     gridbox = gridbox['gridbox_'+i]
     gridbox = document.createElement('div');
-    gridbox.id = 'gridbox_'+i
+    gridbox.id = 'gridbox_'+i;
+    gridbox.className = 'gridboxes';
     document.getElementById('gridbox-container').appendChild(gridbox);
     gridbox.innerHTML = gameBoard.gameBoardGrid[i];
 }
 
-const playerX = () => {
-    gridbox.addEventListener('click', () => {
+// const playerX = () => {
+//     document.getElementsByClassName('gridbox').addEventListener('click', () => {
         
-    });
-}
+//     });
+// }
 
-const playerO = () => {
-    gridbox.addEventListener('click', () => {
-        
-    });
-}
+// const playerO = () => {
+//     document.getElementsByClassName('gridbox').addEventListener('click', () => {
+//         console.log("is now changed to o")
+//     });
+// }
