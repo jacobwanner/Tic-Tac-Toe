@@ -1,14 +1,21 @@
+let gridboxContainer = document.createElement('div');
+gridboxContainer.id = 'gridbox-container';
+document.body.appendChild(gridboxContainer);
+
+let gridbox = []
+let whosTurn = '';
+function CoinFlip(){
+    let rng = Math.floor(Math.random() * 2);
+    console.log(rng);
+    if(rng === 0){
+        return whosTurn = 'O';
+    }else if(rng === 1){
+        return whosTurn = 'X';
+    }
+}
+CoinFlip()
 const gameBoard = (() => {
-    let gameBoardGrid = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-    let topLeft = gameBoardGrid[0];
-    let topMiddle = gameBoardGrid[1];
-    let topRight = gameBoardGrid[2];
-    let middleLeft = gameBoardGrid[3];
-    let center = gameBoardGrid[4];
-    let middleRight = gameBoardGrid[5];
-    let bottomLeft = gameBoardGrid[6];
-    let bottomMiddle = gameBoardGrid[7];
-    let bottomRight = gameBoardGrid[8];
+    let gameBoardGrid = [0, 1, 2, 3, 4, 5, 6, 7, 8]; //make a grid design before changing lol
     // if(gameBoardGrid[0, 1, 2] || gameBoardGrid[ 0, 4 ,8] || gameBoardGrid[0, 3, 6]
     //     || gameBoardGrid[1, 4, 7] || gameBoardGrid[2, 4, 6] || gameBoardGrid[2, 5, 8]
     //     || gameBoardGrid[3, 4, 5] || gameBoardGrid[6, 7 ,8] === gameBoardGrid['x', 'x', 'x'] || gameBoardGrid['o', 'o', 'o'])
@@ -16,25 +23,10 @@ const gameBoard = (() => {
     //         console.log('winner winner');
     //     };
     return {
-        gameBoardGrid,
-        topLeft,
-        topMiddle,
-        topRight,
-        middleLeft,
-        center,
-        middleRight,
-        bottomLeft,
-        bottomMiddle,
-        bottomRight
+        gameBoardGrid
     };
 })();
-
-let gridboxContainer = document.createElement('div');
-gridboxContainer.id = 'gridbox-container';
-document.body.appendChild(gridboxContainer);
-
-let gridbox = []
-
+console.log(whosTurn)
 for (let i = 0; i < gameBoard.gameBoardGrid.length; i++){
     gridbox = gridbox['gridbox_'+i]
     gridbox = document.createElement('div');
@@ -42,16 +34,13 @@ for (let i = 0; i < gameBoard.gameBoardGrid.length; i++){
     gridbox.className = 'gridboxes';
     document.getElementById('gridbox-container').appendChild(gridbox);
     gridbox.innerHTML = gameBoard.gameBoardGrid[i];
+    gridbox.addEventListener('click', () => {
+        if(whosTurn === 'X'){
+            event.target.innerHTML = 'X';
+            return whosTurn = 'O';
+        } else if(whosTurn === 'O'){
+            event.target.innerHTML = 'O';
+            return whosTurn = 'X';
+        } else return console.log('error deciding whos turn it is');
+    });
 }
-
-// const playerX = () => {
-//     document.getElementsByClassName('gridbox').addEventListener('click', () => {
-        
-//     });
-// }
-
-// const playerO = () => {
-//     document.getElementsByClassName('gridbox').addEventListener('click', () => {
-//         console.log("is now changed to o")
-//     });
-// }
